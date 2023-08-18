@@ -1,0 +1,160 @@
+# Vue Router
+
+执行以下命令创建一个用来练习Vue Router的vue项目
+
+```bash
+vue create router
+```
+
+## Vue Router是什么？
+
+Vue Router 是 [Vue.js](https://vuejs.org/) 的官方路由。它与 Vue.js 核心深度集成，让用 Vue.js 构建单页应用变得轻而易举。功能包括：
+
+- 嵌套路由映射
+- 动态路由选择
+- 模块化、基于组件的路由配置
+- 路由参数、查询、通配符
+- 展示由 Vue.js 的过渡系统提供的过渡效果
+- 细致的导航控制
+- 自动激活 CSS 类的链接
+- HTML5 history 模式或 hash 模式
+- 可定制的滚动行为
+- URL 的正确编码
+
+## Vue Router安装
+
+### 直接下载/cdn
+
+ 提供了基于 npm 的 CDN 链接。上述链接将始终指向 npm 上的最新版本。 你也可以通过像 `https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js` 这样的 URL 来使用特定的版本或 Tag。
+
+### npm
+
+```bash
+npm install vue-router@4
+```
+
+### yarn
+
+```bash
+yarn add vue-router@4
+```
+
+
+
+## Vue Router在vue中的配置与使用
+
+### Vue Router在vue中的配置
+
+在`main.js`直接使用
+
+```js
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter); // Vue.use(插件)  在Vue中安装插件
+
+const router = new VueRouter({
+  // 路由配置
+})
+new Vue({
+  ...,
+  router
+})
+```
+
+将配置和使用细化未不同的文件存放在vue项目的`@/router`目录中
+
+`main.js`中的配置
+
+```js
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import App from './App.vue'
+import router from '@/router'
+
+Vue.config.productionTip = false
+
+new Vue({
+  router,
+  render: h => h(App),
+}).$mount('#app')
+
+```
+
+`@/router/index.js`中的内容
+
+```js
+import Vue from "vue";
+import VueRouter from "vue-router";
+import routes from "./routes";
+
+Vue.use(VueRouter); // 使用一个vue插件
+
+const router = new VueRouter({
+  // 配置
+  routes, // 路由匹配规则
+  mode: "history",
+});
+
+export default router;
+
+```
+
+`@/router/routes.js`中可以对路由的匹配规则进行配置
+
+* 配置实际上是对routes进行配置，通常routes为一个数组，数组中的每一项是路由对象。
+* 每个对象可以包含以下配置项（并不是每一项都需要，但是path和component这两项是配置时所必需的）
+  * path  你希望配置的路由地址
+  * component  你希望路由关联的vue组件
+  * children  你希望配置的嵌套路由对象
+  * meta  你希望访问该路由时能获得到的额外信息
+  * name 你希望给路由起的名字
+
+配置实例：
+
+```js
+export default [
+  {
+    name: "Home",
+    path: "/",
+    component:()=>import('@/views/Home.vue'),
+    meta: {
+      title: "首页",
+    },
+  },
+  {
+    name: "Content",
+    path: "/content",
+    component:()=>import('@/views/Content.vue'),
+    meta: {
+      title: "内容",
+    },
+  },
+];
+
+```
+
+### Vue Router在vue中的使用
+
+#### `router-link`
+
+请注意，我们没有使用常规的 `a` 标签，而是使用一个自定义组件 `router-link` 来创建链接。这使得 Vue Router 可以在不重新加载页面的情况下更改 URL，处理 URL 的生成以及编码。我们将在后面看到如何从这些功能中获益。
+
+#### `router-view`
+
+`router-view` 将显示与 url 对应的组件。你可以把它放在任何地方，以适应你的布局。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

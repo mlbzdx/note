@@ -1,0 +1,1 @@
+> 中文的官方教程可以参考这个网址：https://typorachina.com/
