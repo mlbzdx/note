@@ -1,0 +1,122 @@
+# 高度塌陷
+
+## 认识塌陷类型
+
+css中存在这高度塌陷的问题，因为成因问题一般可以分为margin塌陷，float塌陷和absolute塌陷。
+
+* margin塌陷是因为在垂直方向上两个元素都设置margin时，margin趋向于只取其中设置最大值作为两元素间margin间距，而忽略另一个设置的margin值而造成的。
+* float和绝对定位形成的塌陷问题是因为改变了原有的文档流，导致父元素不能够被子元素撑开，从而缺少高度而造成的。
+
+### margin塌陷
+
+#### 1、同级元素塌陷（又称为margin合并）
+
+上面的元素有下边距，下面的元素有上边距，两个边距相遇，真正盒子间距离是较大的那个值。
+
+盒子1与盒子2垂直间距为20像素，并不是两盒子上下外边距之和。这就是边距小的塌陷到了边距值大的值内部。
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>垂直居中</title>
+  </head>
+  <body style="margin: 0; padding: 0; box-sizing: border-box">
+    <div
+      style="
+        width: 150px;
+        height: 100px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        background: red;
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+      "
+    >
+      <pre>
+盒子1
+margin-bottom:10px 
+      </pre>
+    </div>
+    <div style="position: absolute; top: 98px; font-size: 16px">
+      两盒子最终间距取大值为20px
+    </div>
+    <div
+      style="
+        width: 150px;
+        height: 100px;
+        margin-top: 20px;
+        background: blue;
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+      "
+    >
+      <pre>
+盒子2
+margin-top:20px 
+      </pre>
+    </div>
+  </body>
+</html>
+
+解决办法：
+
+同级元素：如果两个元素垂直方向有间距，只需要设置给一个元素，不要进行拆分。
+
+#### 2、父子元素塌陷
+
+父元素和子元素都设置了同方向的margin-top值（父元素为50像素，子元素为100像素），两个属性之间没有其他内容进行隔离，导致两个属性相遇，发生margin塌陷。
+本身父元素与上一个元素的距离是50像素，子元素设置了垂直方向的上边距，会带着父级元素一起掉下来（父元素的上边距50塌陷到了子元素的上边距100里面）。效果如下所示：
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>垂直居中</title>
+  </head>
+  <body>
+    <div>
+      ………………………………………………现在距离顶部100px……………………………………
+    </div>
+    <div
+      style="
+        width: 200px;
+        height: 200px;
+        background: red;
+        margin-top: 50px;
+        color: #fff;
+        position: relative;
+      "
+    >
+      <pre style="position: absolute; right: 0; bottom: 0">
+父盒子
+margin-top:50px
+      </pre>
+      <div
+        style="
+          width: 100px;
+          height: 100px;
+          background: blue;
+          margin-top: 100px;
+          color: #fff;
+        "
+      >
+        <pre style="font-size: 12px">
+子盒子
+margin-top:100px
+      </pre
+        >
+      </div>
+    </div>
+  </body>
+</html>
+
+### float塌陷和absolute引发的塌陷
+
+在文档流中，父元素的高度默认被子元素撑开的，也就是说子元素多高父元素就多高，但是当为我们子元素设置浮动或绝对定位以后，子元素就会完全脱离文档流，此时会导致子元素无法撑开父元素的高度，导致父元素的高度塌陷。由于父元素的高度塌陷，则父元素下的所有元素都会向上移动，导致页面的布局混乱。
+
+未完待续……
