@@ -2,7 +2,9 @@
 
 
 
-## 标题
+# 标题
+
+## 各级标题
 
 **效果演示：** （ `typora` 文档中一共有6种标题）
 
@@ -475,10 +477,10 @@ CO~2~
 有些网站允许你把他们的内容嵌入到其他网页中，其中大部分网站支持 `<iframe>`，Typora 也支持。你是否可以按照他们的 "分享 "页面/对话框，将他们的代码粘贴到 Typora 中，例如b站网页点击分享按钮会有嵌入代码的选项，点击复制即可，如下图所示。
 
 ```html
-<iframe src="//player.bilibili.com/player.html?aid=648248838&bvid=BV1Pe4y137Ri&cid=907260665&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:60vh;"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=648248838&bvid=BV1Pe4y137Ri&cid=907260665&page=1&autopaly=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:60vh;"> </iframe>
 ```
 
 
 
-<iframe src="//player.bilibili.com/player.html?aid=648248838&bvid=BV1Pe4y137Ri&cid=907260665&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:60vh;"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=648248838&bvid=BV1Pe4y137Ri&cid=907260665&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:60vh;"> </iframe>
 
