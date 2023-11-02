@@ -169,5 +169,3 @@ git remote add origin [https://github.com/tugenhua0707/testgit.git](https://link
 git push origin master
 
 把本地master分支的最新修改推送到github上了，现在你就拥有了真正的分布式版本库了。
-
-### 远程同步

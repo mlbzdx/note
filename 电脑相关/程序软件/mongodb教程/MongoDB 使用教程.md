@@ -1,9 +1,6 @@
 ## cisdibootslakeab@mail.com： ##
 mongodb数据库使用教程
 
-
-## ChatGPT： ##
-
 MongoDB是一个流行的开源NoSQL数据库，它以其灵活性、可扩展性和高性能而闻名。下面是一个MongoDB数据库的简单使用教程，涵盖安装、基本操作和常见任务。
 1. 安装MongoDB
 首先，您需要安装MongoDB。您可以从MongoDB官方网站下载适用于您操作系统的安装程序，并按照说明进行安装。
@@ -105,9 +102,6 @@ mongodb相关书籍推荐
 
 ## cisdibootslakeab@mail.com： ##
 vue知识结构
-
-
-## ChatGPT： ##
 
 Vue.js是一个流行的JavaScript框架，用于构建用户界面。下面是一个Vue.js知识结构的简要概述，涵盖了从基础到高级的内容：
 1. 基础概念
